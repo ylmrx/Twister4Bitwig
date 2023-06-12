@@ -66,6 +66,12 @@ public class MidiFighterTwisterExtension extends ControllerExtension {
                 cursorTrack.selectParent();
             }
         });
+        cursorTrackKnob1.getButton().onDoublePress(() -> {
+            if(cursorTrack.isGroup().getAsBoolean()) {
+                cursorTrack.selectParent();
+                cursorTrack.isGroupExpanded().toggle();
+            }
+        });
         cursorTrack.color().addValueObserver(cursorTrackKnob1::setColor);
 
         final MidiFighterTwister.Knob cursorTrackVolumeKnob1        = twister.getKnob(DEVICE_BANK, 1);
@@ -159,6 +165,12 @@ public class MidiFighterTwisterExtension extends ControllerExtension {
                 cursorTrack.selectFirstChild();
             }
             else {
+                cursorTrack.selectParent();
+                cursorTrack.isGroupExpanded().toggle();
+            }
+        });
+        cursorTrackKnob1.getButton().onDoublePress(() -> {
+            if(cursorTrack.isGroup().getAsBoolean()) {
                 cursorTrack.selectParent();
             }
         });
