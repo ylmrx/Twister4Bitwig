@@ -46,9 +46,26 @@ public class MidiFighterTwisterExtension extends ControllerExtension {
          * Device mode (bank 1) *
          * -------------------- */
 
+        cursorTrack.isGroupExpanded().markInterested();
+        cursorTrack.isGroup().markInterested();
         final MidiFighterTwister.Knob cursorTrackKnob1              = twister.getKnob(DEVICE_BANK, 0);
         cursorTrackKnob1.mapTo(mappableCursorTrackSelector);
-        cursorTrackKnob1.getButton().onDown(cursorTrack.arm()::toggle);
+        cursorTrackKnob1.getButton().onShortPress(() -> {
+            if (cursorTrack.isGroup().getAsBoolean()) {
+                cursorTrack.isGroupExpanded().toggle();
+            } else {
+                cursorTrack.arm().toggle();
+            }
+        });
+        cursorTrackKnob1.getButton().onLongPress(() -> {
+            if(cursorTrack.isGroup().getAsBoolean()) {
+                if(!cursorTrack.isGroupExpanded().getAsBoolean()) cursorTrack.isGroupExpanded().set(true);
+                cursorTrack.selectFirstChild();
+            }
+            else {
+                cursorTrack.selectParent();
+            }
+        });
         cursorTrack.color().addValueObserver(cursorTrackKnob1::setColor);
 
         final MidiFighterTwister.Knob cursorTrackVolumeKnob1        = twister.getKnob(DEVICE_BANK, 1);
@@ -129,7 +146,22 @@ public class MidiFighterTwisterExtension extends ControllerExtension {
 
         final MidiFighterTwister.Knob cursorTrackKnob2              = twister.getKnob(TRACK_BANK, 0);
         cursorTrackKnob2.mapTo(mappableCursorTrackSelector);
-        cursorTrackKnob2.getButton().onDown(cursorTrack.arm()::toggle);
+        cursorTrackKnob2.getButton().onShortPress(() -> {
+            if (cursorTrack.isGroup().getAsBoolean()) {
+                cursorTrack.isGroupExpanded().toggle();
+            } else {
+                cursorTrack.arm().toggle();
+            }
+        });
+        cursorTrackKnob2.getButton().onLongPress(() -> {
+            if(cursorTrack.isGroup().getAsBoolean()) {
+                if(!cursorTrack.isGroupExpanded().getAsBoolean()) cursorTrack.isGroupExpanded().set(true);
+                cursorTrack.selectFirstChild();
+            }
+            else {
+                cursorTrack.selectParent();
+            }
+        });
         cursorTrack.color().addValueObserver(cursorTrackKnob2::setColor);
 
         final MidiFighterTwister.Knob cursorTrackVolumeKnob2        = twister.getKnob(TRACK_BANK, 1);

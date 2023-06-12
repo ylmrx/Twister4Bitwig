@@ -18,19 +18,19 @@ public class MidiFighterTwisterExtensionDefinition extends ControllerExtensionDe
     @Override
     public String getName()
     {
-        return "Twister4Bitwig";
+        return "Twister4Bitwig (groupNav mod)";
     }
 
     @Override
     public String getAuthor()
     {
-        return "Daniel Mulford";
+        return "Daniel Mulford (mod: ylmrx)";
     }
 
     @Override
     public String getVersion()
     {
-        return "1.0.1";
+        return "1.0.1_1";
     }
 
     @Override
@@ -54,7 +54,7 @@ public class MidiFighterTwisterExtensionDefinition extends ControllerExtensionDe
     @Override
     public int getRequiredAPIVersion()
     {
-        return 7;
+        return 15;
     }
 
     @Override
