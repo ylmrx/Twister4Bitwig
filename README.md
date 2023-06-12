@@ -11,3 +11,5 @@ Documentation for this extension is accessible either via the question mark icon
 
 - Short press on track selector : toggle arm (on a track), fold/unfold (on a group)
 - Long press on track selector :  go in a group track (and unfold it), or select its parent track
+- [special situation] 1st track within a group.. is a group, it'll only go in, in order to go out, scroll to
+the very bottom of the group and _long-click_ there.
